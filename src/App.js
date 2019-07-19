@@ -1,15 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ItemList from "./components/item-lis";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <div>
           Edit <code>src/App.js</code> and save to reload.
-        </p>
+      <ItemList></ItemList>
+        </div>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -22,5 +24,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
