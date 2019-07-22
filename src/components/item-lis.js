@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {itemsFetchDataUrl, removedItem, removedItem2} from "../actions/items";
+import {itemsFetchDataUrl, removedItem} from "../actions/items";
 
 
 class ItemList extends Component {
@@ -15,7 +15,7 @@ class ItemList extends Component {
                     <button onClick={this.sayHello}>SayHello</button>
                     {this.props.items.map((item,index) => (
                         <li key={item.id}> {item.label ? item.label : "no label"}
-                        <button onClick={this.removeItem.bind(this, index,this.props.items)}>remove</button></li>
+                        <button onClick={this.removeItem.bind(this, item,this.props.items)}>remove</button></li>
                     ))}
                 </ul>)
         }
@@ -27,8 +27,8 @@ class ItemList extends Component {
         }
     }
 
-    removeItem = function (index, items) {
-        this.props.removeItem(index, items)
+    removeItem = function (item, items) {
+        this.props.removeItem(item, items)
     };
 
     sayHello= function(){
@@ -49,7 +49,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchData: (url) => dispatch(itemsFetchDataUrl(url)),
-        removeItem: (index,items) => dispatch(removedItem(index,items))
+        removeItem: (item,items) => dispatch(removedItem(item,items))
     };
 };
 

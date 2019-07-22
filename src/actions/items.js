@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export function itemHasErrored(bool) {
     return {
         type: 'ITEM_HAS_ERRORED',
@@ -13,20 +15,12 @@ export function itemIsLoading(bool) {
     }
 }
 
-
-export function removedItem(index,items) {
-    return {
-        type: 'REMOVED_ITEM',
-        index,
-        items
-    }
-}
-
-export  function removedItem2(index, items) {
+export  function removedItem(removedItem, items) {
     return function (dispatch) {
-        items.splice(index,1);
-        console.log("index " + index + " items length " + items.length)
-        dispatch(itemsData(items));
+        const newItems = _.remove(items, function (item) {
+            return item !== removedItem;
+        });
+        dispatch(itemsData(newItems));
     }
 }
 

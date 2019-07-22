@@ -26,16 +26,3 @@ export function items(state = [], action) {
             return state;
     }
 }
-
-
-
-export function removedItems(state= [], action) {
-    switch (action.type) {
-        case 'REMOVED_ITEM':
-            console.log('got to remove items reducer => length => items_index', action.items.length, action.index)
-            action.items.splice(action.index,1);
-            return action.items;
-        default:
-            return state;
-    }
-}
